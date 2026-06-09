@@ -8,6 +8,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
 
+        html {
+            /* 4Kなどの大画面サイネージ向けに基準サイズを拡大 */
+            /* 画面幅に応じてフォント・余白が美しくスケーリングされます */
+            font-size: 1vw;
+        }
+
         body {
             font-family: 'Noto Sans JP', sans-serif;
             background-color: #f8fafc; /* slate-50 よりクリーンで明るい背景 */
@@ -32,7 +38,7 @@
             50% { opacity: 0; }
         }
 
-        /* フッターテロップ（縦文字崩れの修正） */
+        /* フッターテロップ */
         .marquee-wrapper {
             background-color: #111827; 
             color: #facc15; 
@@ -54,70 +60,70 @@
 <body class="h-screen w-screen flex flex-col overflow-hidden antialiased text-slate-800">
 
     <!-- ヘッダーエリア（緊急地震速報） -->
-    <header class="bg-red-600 text-white py-4 px-10 flex items-center justify-between z-10 shrink-0 shadow-lg shadow-red-900/20">
-        <div class="flex items-center gap-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 text-yellow-300" viewBox="0 0 24 24" fill="currentColor">
+    <header class="bg-red-600 text-white py-5 px-10 flex items-center justify-between z-10 shrink-0 shadow-lg shadow-red-900/20">
+        <div class="flex items-center gap-5">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-yellow-300" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
             </svg>
-            <h1 class="text-3xl font-black tracking-widest drop-shadow-sm">緊急地震速報</h1>
+            <h1 class="text-5xl font-black tracking-widest drop-shadow-sm">緊急地震速報</h1>
         </div>
-        <div class="text-xl font-bold px-6 py-2 border-2 border-white/40 blink-alert rounded-full backdrop-blur-sm transition-colors duration-300">
+        <div class="text-3xl font-bold px-8 py-3 border-4 border-white/40 blink-alert rounded-full backdrop-blur-sm transition-colors duration-300">
             強い揺れに警戒してください
         </div>
     </header>
 
     <!-- メインコンテンツエリア -->
-    <main class="flex-grow flex flex-col p-8 gap-8 max-w-[1920px] mx-auto w-full h-full overflow-hidden">
+    <main class="flex-grow flex flex-col p-8 gap-8 w-full h-full overflow-hidden">
         
         <!-- 上段：地震情報パネル -->
-        <div class="flex bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 h-[55%] shrink-0 overflow-hidden relative">
-            <div class="absolute top-0 left-0 w-full h-1.5 bg-red-500"></div>
+        <div class="flex bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 h-[55%] shrink-0 overflow-hidden relative">
+            <div class="absolute top-0 left-0 w-full h-2 bg-red-500"></div>
             
             <!-- 左ブロック：最大震度 -->
-            <div class="w-1/3 bg-slate-50/50 border-r border-slate-100 p-10 flex flex-col justify-center items-center">
-                <h2 class="text-lg font-bold text-slate-400 mb-6 tracking-widest flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="w-1/3 bg-slate-50/50 border-r border-slate-100 p-8 flex flex-col justify-center items-center">
+                <h2 class="text-2xl font-bold text-slate-400 mb-6 tracking-widest flex items-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                     最大震度
                 </h2>
-                <div class="text-9xl text-red-600 font-black drop-shadow-sm tracking-tighter">6<span class="text-6xl ml-2 tracking-normal">弱</span></div>
-                <div class="mt-10 text-lg font-bold text-emerald-700 bg-emerald-50 px-6 py-2 rounded-full border border-emerald-200 shadow-sm">津波の心配はありません</div>
+                <div class="text-[12rem] text-red-600 font-black drop-shadow-sm tracking-tighter leading-none">6<span class="text-7xl ml-2 tracking-normal">弱</span></div>
+                <div class="mt-10 text-2xl font-bold text-emerald-700 bg-emerald-50 px-8 py-3 rounded-full border border-emerald-200 shadow-sm">津波の心配はありません</div>
             </div>
             
             <!-- 右ブロック：詳細情報と各地の震度 -->
-            <div class="w-2/3 p-10 flex flex-col">
+            <div class="w-2/3 p-8 flex flex-col">
                 <!-- 地震概要 -->
-                <div class="flex gap-16 border-b border-slate-100 pb-8 mb-8 shrink-0">
+                <div class="flex gap-20 border-b border-slate-100 pb-6 mb-6 shrink-0">
                     <div>
-                        <div class="text-sm font-bold text-slate-400 mb-2 tracking-wider">発生時刻</div>
-                        <div class="text-4xl font-black text-slate-700" id="current-time">--月--日 --:-- 頃</div>
+                        <div class="text-2xl font-bold text-slate-400 mb-2 tracking-wider">発生時刻</div>
+                        <div class="text-6xl font-black text-slate-700" id="current-time">--月--日 --:-- 頃</div>
                     </div>
                     <div>
-                        <div class="text-sm font-bold text-slate-400 mb-2 tracking-wider">震央地</div>
-                        <div class="text-4xl font-black text-slate-700">愛知県西部</div>
+                        <div class="text-2xl font-bold text-slate-400 mb-2 tracking-wider">震央地</div>
+                        <div class="text-6xl font-black text-slate-700">愛知県西部</div>
                     </div>
                 </div>
                 
                 <!-- 各地の震度リスト -->
                 <div class="flex-grow flex flex-col min-h-0">
-                    <h3 class="text-sm font-bold text-slate-400 mb-5 tracking-wider">各地の震度</h3>
-                    <div class="space-y-5 overflow-hidden pr-4">
-                        <div class="flex items-start gap-5">
-                            <div class="bg-red-500 text-white px-4 py-1.5 rounded-lg font-bold text-lg w-28 text-center shrink-0 shadow-sm">震度 6弱</div>
-                            <div class="leading-relaxed font-bold text-slate-700 text-xl pt-1">
+                    <h3 class="text-2xl font-bold text-slate-400 mb-4 tracking-wider">各地の震度</h3>
+                    <div class="space-y-4 overflow-hidden pr-4">
+                        <div class="flex items-start gap-6">
+                            <div class="bg-red-500 text-white px-5 py-2 rounded-xl font-bold text-2xl w-36 text-center shrink-0 shadow-sm">震度 6弱</div>
+                            <div class="leading-relaxed font-bold text-slate-700 text-3xl pt-1">
                                 名古屋市中区、名古屋市熱田区
                             </div>
                         </div>
-                        <div class="flex items-start gap-5">
-                            <div class="bg-red-400 text-white px-4 py-1.5 rounded-lg font-bold text-lg w-28 text-center shrink-0 shadow-sm">震度 5強</div>
-                            <div class="leading-relaxed font-bold text-slate-700 text-xl pt-1">
+                        <div class="flex items-start gap-6">
+                            <div class="bg-red-400 text-white px-5 py-2 rounded-xl font-bold text-2xl w-36 text-center shrink-0 shadow-sm">震度 5強</div>
+                            <div class="leading-relaxed font-bold text-slate-700 text-3xl pt-1">
                                 名古屋市東区、名古屋市中村区、豊田市、岡崎市
                             </div>
                         </div>
-                        <div class="flex items-start gap-5">
-                            <div class="bg-amber-500 text-white px-4 py-1.5 rounded-lg font-bold text-lg w-28 text-center shrink-0 shadow-sm">震度 5弱</div>
-                            <div class="leading-relaxed font-bold text-slate-600 text-xl pt-1">
+                        <div class="flex items-start gap-6">
+                            <div class="bg-amber-500 text-white px-5 py-2 rounded-xl font-bold text-2xl w-36 text-center shrink-0 shadow-sm">震度 5弱</div>
+                            <div class="leading-relaxed font-bold text-slate-600 text-3xl pt-1">
                                 一宮市、瀬戸市、半田市、春日井市、津島市、刈谷市
                             </div>
                         </div>
@@ -130,51 +136,51 @@
         <div class="flex gap-8 h-[45%] flex-grow min-h-0">
             
             <!-- 交通情報 -->
-            <div class="w-1/2 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-10 flex flex-col relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-amber-400"></div>
-                <h2 class="text-2xl font-black text-slate-700 mb-8 flex items-end gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-500 pb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="w-1/2 bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-8 flex flex-col relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-amber-400"></div>
+                <h2 class="text-4xl font-black text-slate-700 mb-8 flex items-end gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-500 pb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
                     </svg>
-                    現在の運行状況 <span class="text-base text-slate-400 font-bold tracking-normal ml-1">(金山駅)</span>
+                    現在の運行状況 <span class="text-2xl text-slate-400 font-bold tracking-normal ml-2">(金山駅)</span>
                 </h2>
-                <ul class="space-y-4 text-xl flex-grow overflow-hidden">
-                    <li class="flex justify-between items-center bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <ul class="space-y-4 text-3xl flex-grow overflow-hidden">
+                    <li class="flex justify-between items-center bg-slate-50 p-5 rounded-2xl border border-slate-100">
                         <span class="font-bold text-slate-700 tracking-wide">JR 東海道本線・中央本線</span>
-                        <span class="bg-red-500 text-white px-5 py-1.5 rounded-full font-bold text-base shadow-sm shrink-0 blink-text">運転見合わせ</span>
+                        <span class="bg-red-500 text-white px-6 py-2 rounded-full font-bold text-2xl shadow-sm shrink-0 blink-text">運転見合わせ</span>
                     </li>
-                    <li class="flex justify-between items-center bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <li class="flex justify-between items-center bg-slate-50 p-5 rounded-2xl border border-slate-100">
                         <span class="font-bold text-slate-700 tracking-wide">名鉄 名古屋本線</span>
-                        <span class="bg-red-500 text-white px-5 py-1.5 rounded-full font-bold text-base shadow-sm shrink-0 blink-text">運転見合わせ</span>
+                        <span class="bg-red-500 text-white px-6 py-2 rounded-full font-bold text-2xl shadow-sm shrink-0 blink-text">運転見合わせ</span>
                     </li>
-                    <li class="flex justify-between items-center bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <li class="flex justify-between items-center bg-slate-50 p-5 rounded-2xl border border-slate-100">
                         <span class="font-bold text-slate-700 tracking-wide">地下鉄 名城線・名港線</span>
-                        <span class="bg-red-500 text-white px-5 py-1.5 rounded-full font-bold text-base shadow-sm shrink-0 blink-text">運転見合わせ</span>
+                        <span class="bg-red-500 text-white px-6 py-2 rounded-full font-bold text-2xl shadow-sm shrink-0 blink-text">運転見合わせ</span>
                     </li>
                 </ul>
             </div>
 
             <!-- 避難・誘導情報 -->
-            <div class="w-1/2 bg-white rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-10 flex flex-col relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-full h-1.5 bg-blue-500"></div>
-                <h2 class="text-2xl font-black text-slate-700 mb-8 flex items-end gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-500 pb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <div class="w-1/2 bg-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 p-8 flex flex-col relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-2 bg-blue-500"></div>
+                <h2 class="text-4xl font-black text-slate-700 mb-8 flex items-end gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-500 pb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                     お客様へのお願い
                 </h2>
-                <ul class="space-y-6 text-xl text-slate-600 leading-relaxed font-bold flex-grow overflow-hidden pr-2">
-                    <li class="flex items-start gap-4">
-                        <div class="w-2.5 h-2.5 mt-2.5 bg-blue-400 rounded-full shrink-0"></div>
-                        <span>慌てて外に飛び出さず、その場で<span class="text-red-500 bg-red-50 px-2 py-0.5 rounded-md mx-1">頭を保護</span>してください。</span>
+                <ul class="space-y-6 text-3xl text-slate-600 leading-relaxed font-bold flex-grow overflow-hidden pr-2">
+                    <li class="flex items-start gap-5">
+                        <div class="w-3.5 h-3.5 mt-3.5 bg-blue-400 rounded-full shrink-0"></div>
+                        <span>慌てて外に飛び出さず、その場で<span class="text-red-500 bg-red-50 px-3 py-1 rounded-lg mx-1">頭を保護</span>してください。</span>
                     </li>
-                    <li class="flex items-start gap-4">
-                        <div class="w-2.5 h-2.5 mt-2.5 bg-blue-400 rounded-full shrink-0"></div>
+                    <li class="flex items-start gap-5">
+                        <div class="w-3.5 h-3.5 mt-3.5 bg-blue-400 rounded-full shrink-0"></div>
                         <span>落下物（看板や照明など）から離れてください。</span>
                     </li>
-                    <li class="flex items-start gap-4">
-                        <div class="w-2.5 h-2.5 mt-2.5 bg-blue-400 rounded-full shrink-0"></div>
-                        <span>揺れが収まるまで待ち、<span class="text-red-500 bg-red-50 px-2 py-0.5 rounded-md mx-1">駅係員の指示</span>に従って落ち着いて行動してください。</span>
+                    <li class="flex items-start gap-5">
+                        <div class="w-3.5 h-3.5 mt-3.5 bg-blue-400 rounded-full shrink-0"></div>
+                        <span>揺れが収まるまで待ち、<span class="text-red-500 bg-red-50 px-3 py-1 rounded-lg mx-1">駅係員の指示</span>に従って落ち着いて行動してください。</span>
                     </li>
                 </ul>
             </div>
@@ -183,7 +189,7 @@
     </main>
 
     <!-- フッター（スクロールテロップ） -->
-    <footer class="marquee-wrapper border-t border-slate-800 text-2xl font-bold py-3 tracking-widest shrink-0 z-10">
+    <footer class="marquee-wrapper border-t-2 border-slate-800 text-4xl font-bold py-5 tracking-widest shrink-0 z-10">
         <div class="marquee-content">
             【緊急】愛知県西部で地震が発生しました。金山駅を発着する全路線（JR・名鉄・地下鉄）は安全確認のため運転を見合わせています。お客様は慌てずに駅係員の指示に従い、コンコースなど安全な場所で待機してください。身の回りの落下物に十分ご注意ください。
         </div>
